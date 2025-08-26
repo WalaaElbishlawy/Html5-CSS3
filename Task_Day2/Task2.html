@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Player</title>
+  <style>
+    .player {
+      width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+    video {
+      width: 100%;
+      border: 2px solid #333;
+      border-radius: 8px;
+    }
+    .controls {
+      margin-top: 8px;
+    }
+    button, input {
+      margin: 4px;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player">
+
+    <video id="video" poster="img/download.png">
+      <source src="img/ed_1024_512kb.mp4" type="video/mp4">
+    </video>
+
+    <button id="playPause">Play</button>
+    <button id="muteUnmute">Mute</button>
+    <br>
+    <progress id="progress" value="0" max="100"></progress>
+    <br>
+    <input type="range" id="volume" min="0.1" max="1" step="0.1" value="1">
+  </div>
+
+  <label for="playlist">Choose a video:</label>
+  <select id="playlist">
+    <option value="img/ed_1024_512kb.mp4">Video 1</option>
+    <option value="img/file_example_MP4_480_1_5MG.mp4">Video 2</option>
+    <option value="img/sample.mp4">Video 3</option>
+  </select>
+
+  <script>
+
+    const video = document.getElementById('video');
+    const playPause = document.getElementById('playPause');
+    const muteUnmute = document.getElementById('muteUnmute');
+    const progress = document.getElementById('progress');
+    const volume = document.getElementById('volume');
+    const playlist = document.getElementById("playlist");
+
+    playPause.onclick = () => 
+    {
+      if (video.paused) 
+      {
+        video.play();
+        playPause.textContent = "Pause";
+      }
+      else
+      {
+        video.pause();
+        playPause.textContent = "Play";
+      }
+    };
+
+    muteUnmute.onclick = () => 
+    {
+      video.muted = !video.muted;
+      muteUnmute.textContent = video.muted ? "Unmute" : "Mute";
+    };
+
+    video.ontimeupdate = () =>
+    {
+      progress.value = (video.currentTime / video.duration) * 100;
+    };
+
+    progress.onclick = (e) => {
+      const percent = e.offsetX / progress.offsetWidth;
+      video.currentTime = percent * video.duration;
+    };
+
+    volume.oninput = () => 
+    {
+      video.volume = volume.value;
+    };
+
+     playlist.addEventListener("change", function () {
+      video.src = this.value;  
+      video.load();             
+      video.play();            
+      playPause.textContent = "Pause";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+header, nav, footer {
+    background: #ddd;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+    border: 1 px solid #ddd
+}
+
+main{
+    display: flex;
+    margin: 5px;
+}
+
+main aside,
+main section{
+    padding: 80px;
+    margin: 5px;
+    border: 1 px solid #ddd;
+    text-align: center;
+    background: #ddd;
+}
+
+main aside{
+    flex:1;
+    width: 60px;
+}
+main section{
+    flex:2;
+    background-color: #ddd;
+}
+
+
+form{
+  max-width: 400px;
+  margin: auto;
+  background: #eee5e5;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Form</title>
+</head>
+<body>
+    <form>
+        <label for="email">Email:</label>
+        <input id="email" type="email" required><br><br>
+        <label for="web">Website:</label>
+        <input id="web" type="url" required><br><br>
+        <label for="phone">Phone Number:</label>
+        <input id="phone" type="tel" pattern="[0-9]{10}" required><br><br>
+        <label for="color">Favorite Color:</label>
+        <input id="color" type="color"><br><br>
+        <label for="BD">Date Of Birth:</label>
+        <input id="BD" type="date"><br><br>
+        <label for="meter">Meter:</label>
+        <meter id="meter" value="0.6" low="34" high="80" optimum="55">60%</meter><br><br>
+        <label for="progress">Progress:</label>
+        <progress id="progress" value="50" max="100"></progress><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>
